@@ -15,6 +15,7 @@ let yVelocity = 0;
 let foodX;
 let foodY;
 let score = 0;
+let delay = 150;
 let snake = [
     {x:unitSize*4, y:0},
     {x:unitSize*3, y:0},
@@ -44,7 +45,7 @@ function nextTick(){
             drawSnake();
             checkGameOver();
             nextTick();
-        }, 75);
+        }, delay);
     } else {
         displayGameOver();
     }
@@ -61,7 +62,6 @@ function createFood(){
 
     foodX = randomFood(0, gameWidth - unitSize);
     foodY = randomFood(0, gameWidth - unitSize);
-    console.log(foodX);
 };
 function drawFood(){
     ctx.fillStyle = foodColor;
@@ -75,6 +75,9 @@ function moveSnake(){
     if (snake[0].x == foodX && snake[0].y == foodY) {
         score += 1;
         scoreText.textContent = score;
+        if (delay > 50) {
+            delay -= 10;
+        }
         createFood();
     } else {
         snake.pop();
@@ -94,25 +97,29 @@ function changeDirection(event){
     const UP = 38;
     const RIGHT = 39;
     const DOWN = 40;
+    const A = 65;
+    const D = 68;
+    const S = 83;
+    const W = 87;
     const goingUp = (yVelocity == -unitSize);
     const goingDown = (yVelocity == unitSize);
     const goingLeft = (xVelocity == -unitSize);
     const goingRight = (xVelocity == unitSize);
 
     switch(true) {
-        case(keyPressed == LEFT && !goingRight):
+        case((keyPressed == LEFT || keyPressed == A) && !goingRight):
             xVelocity = -unitSize;
             yVelocity = 0;
             break;
-        case(keyPressed == UP && !goingDown):
+        case((keyPressed == UP || keyPressed == W) && !goingDown):
             xVelocity = 0;
             yVelocity = -unitSize;
             break;
-        case(keyPressed == RIGHT && !goingLeft):
+        case((keyPressed == RIGHT || keyPressed == D) && !goingLeft):
             xVelocity = unitSize;
             yVelocity = 0;
             break;
-        case(keyPressed == DOWN && !goingUp):
+        case((keyPressed == DOWN || keyPressed == S) && !goingUp):
             xVelocity = 0;
             yVelocity = unitSize;
             break;
@@ -141,7 +148,7 @@ function checkGameOver(){
     }
 };
 function displayGameOver(){
-    ctx.font = "50px MV Boli";
+    ctx.font = "25px Public Pixel";
     ctx.fillStyle = "black";
     ctx.textAlign = "center";
     ctx.fillText("GAME OVER!", gameWidth / 2, gameHeight / 2);

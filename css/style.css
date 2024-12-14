@@ -1,18 +1,31 @@
+body {
+    font-family: "Public Pixel", sans-serif;
+}
 #gameContainer {
     text-align: center;
 }
 #gameBoard {
     border: 3px solid black;
 }
-#score {
+#scoreText {
     font-size: 100px;
+    
+    margin: 20px auto 20px auto;
 }
 #resetBtn {
-    font-size: 20px;
-    width: 100px;
+    font-size: 15px;
     border: 3px solid black;
     border-radius: 12px;
     background-color: rgb(255, 64, 64);
     font-weight: bold;
     cursor: pointer;
+    padding: 10px;
+    margin: 10px;
+}
+.flexContainer {
+    display: flex;
+    justify-content: center;
+}
+.flexContainer > div {
+    margin: 20px;
 }

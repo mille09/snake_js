@@ -1,12 +1,32 @@
 <!DOCTYPE html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.cdnfonts.com/css/public-pixel" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
 </head>
 <body>
-    <div id="gameContainer">
-        <canvas id="gameBoard" width="500" height="500"></canvas>
-        <div id="scoreText">0</div>
-        <button id="resetBtn">Restart</button>
+    <div class="flexContainer">
+        <div>
+            <h2>Controls</h2>
+            <p>W - Up</p>
+            <p>S - Down</p>
+            <p>A - Left</p>
+            <p>D - Right</p>
+        </div>
+        <div id="gameContainer">
+            <canvas id="gameBoard" width="500" height="500"></canvas>
+            <div id="scoreText">0</div>
+            <button id="resetBtn">Restart</button>
+        </div>
+        <div>
+            <h2>Controls</h2>
+            <p><i class="fas fa-arrow-up"></i> - Up</p>
+            <p><i class="fas fa-arrow-down"></i> - Down</p>
+            <p><i class="fas fa-arrow-left"></i> - Left</p>
+            <p><i class="fas fa-arrow-right"></i> - Right</p>
+        </div>
     </div>
+    
     <script src="scripts/script.js"></script>
 </body>
